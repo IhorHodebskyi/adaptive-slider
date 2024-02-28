@@ -4,21 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./style.css"
   </head>
   <body>
-    <div class="itcss"></div>
-    <a
-      class="itcss__control itcss__control_prev"
-      href="#"
-      role="button"
-      data-slide="prev"
-    ></a>
-    <a
-      class="itcss__control itcss__control_next"
-      href="#"
-      role="button"
-      data-slide="next"
-    ></a>
+    <div class="container">
+      <button class="button-prev">PREV</button>
+
+      <div class="slider-wrapper">
+        <div class="slider-line">
+          <img src="./img/1.jpg" alt="" />
+          <img src="./img/2.jpg" alt="" />
+          <img src="./img/3.jpg" alt="" />
+          <img src="./img/4.jpg" alt="" />
+        </div>
+      </div>
+
+      <button class="button-next">NEXT</button>
+
+      <div class="dots-wrapper">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
   </body>
-  <script src="./slider.js" type="module"></script>
+  <script defer src="./script.js" type="module"></script>
 </html>
