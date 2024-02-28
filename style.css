@@ -30,6 +30,7 @@ img {
   display: flex;
   position: relative;
   left: 0;
+  transition: 1s;
 }
 
 .button-prev,
