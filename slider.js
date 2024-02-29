@@ -9,8 +9,8 @@ let position = 0,
 //function
 
 const nextSlide = () => {
-  if (position < (dots.length - 1) * 400) {
-    position += 400;
+  if (position < (dots.length - 1) * 500) {
+    position += 500;
     dotIndex++;
   } else {
     position = 0;
@@ -22,10 +22,10 @@ const nextSlide = () => {
 
 const prevSlide = () => {
   if (position > 0) {
-    position -= 400;
+    position -= 500;
     dotIndex--;
   } else {
-    position = (dots.length - 1) * 400;
+    position = (dots.length - 1) * 500;
     dotIndex = dots.length - 1;
   }
   slideLine.style.left = -position + "px";
@@ -45,7 +45,7 @@ prevButton.addEventListener("click", prevSlide);
 
 dots.forEach((dot, index) => {
   dot.addEventListener("click", () => {
-    position = index * 400;
+    position = index * 500;
     slideLine.style.left = -position + "px";
     dotIndex = index;
     thisSlide(dotIndex);
@@ -53,6 +53,6 @@ dots.forEach((dot, index) => {
 });
 
 // setInterval
-setInterval(() => {
-  nextSlide();
-}, 3000);
+// setInterval(() => {
+//   nextSlide();
+// }, 3000);

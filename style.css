@@ -3,11 +3,11 @@
   padding: 0;
 }
 img {
-  width: 400px;
+  width: 500px;
 }
 .container {
   padding: 150px 20px;
-  background: #dfbe8c;
+
   text-align: center;
 }
 
@@ -18,9 +18,34 @@ img {
   display: inline-block;
   vertical-align: middle;
 }
+.button-next,
+.button-prev {
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+.button-prev {
+  position: absolute;
+  top: 45%;
+  left: 20px;
+  transform: rotate(-135deg);
+  z-index: 1;
+}
+
+.button-next {
+  position: absolute;
+  top: 45%;
+  right: 20px;
+  transform: rotate(45deg);
+  z-index: 1;
+}
 
 .slider-wrapper {
-  width: 400px;
+  position: relative;
+  width: 500px;
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 1px 1px 10px 2px #3d3a35;
@@ -32,35 +57,29 @@ img {
   left: 0;
   transition: 1s;
 }
-
-.button-prev,
-.button-next {
-  padding: 5px 10px;
-  background: #ff8a3c;
-  color: #fff;
-  border: 1px solid #2b2a28;
-  border-radius: 5px;
-  box-shadow: 1px 1px 10px 2px #3d3a35;
+.dots-wrapper {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 10;
 }
 
-.button-prev:hover,
-.button-next:hover,
 .dot:hover {
-  background: #f7b68b;
+  background: #fcfcfc;
 }
-.button-prev:active,
-.button-next:active,
+
 .dot:active {
-  background: #ff8a3c;
+  background: #fffcfc;
 }
 
 .dot {
-  width: 20px;
+  width: 10px;
   height: 10px;
   margin: 5px;
-  background: #ff8a3c;
-  border-radius: 5px;
+  background: #969696;
+  border-radius: 50%;
 }
 .active {
-  background: #f7b68b;
+  background: #ffffff;
 }
