@@ -13,11 +13,11 @@ img {
   justify-content: center;
 }
 
-.slider-wrapper,
+.slider,
 .dots-wrapper {
   display: flex;
 }
-.slider-wrapper {
+.slider {
   position: relative;
   max-width: 600px;
   overflow: hidden;
