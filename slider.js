@@ -3,6 +3,32 @@ const slideLine = document.querySelector(".slider-line"),
   prevButton = document.querySelector(".button-prev"),
   nextButton = document.querySelector(".button-next"),
   sliderDots = document.querySelectorAll(".dot");
+//===========================================================
+const dots = document.querySelector(".dots-wrapper");
+const images = [
+  {
+    url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
+    alt: "White and Black Long Fur Cat",
+  },
+  {
+    url: "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?dpr=2&h=750&w=1260",
+    alt: "Orange and White Koi Fish Near Yellow Koi Fish",
+  },
+  {
+    url: "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?dpr=2&h=750&w=1260",
+    alt: "Group of Horses Running",
+  },
+];
+
+const markup = images
+  .map(
+    (image) => `<img class="slider-img" src="${image.url}" alt="${image.alt}">`
+  )
+  .join(" ");
+console.log(markup);
+slideLine.insertAdjacentHTML("beforeend", markup);
+
+//=============================================================
 
 let sliderCount = 0;
 let sliderWidth;
@@ -55,3 +81,4 @@ sliderDots.forEach((dot, index) => {
 // }, 3000);
 
 showSlider();
+thisSlider(sliderCount);
