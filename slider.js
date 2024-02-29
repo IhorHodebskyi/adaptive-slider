@@ -8,8 +8,8 @@ let sliderCount = 0;
 let sliderWidth;
 
 window.addEventListener("resize", showSlider);
-//function
-//event
+nextButton.addEventListener("click", nextSlide);
+prevButton.addEventListener("click", prevSlide);
 
 function showSlider() {
   sliderWidth = document.querySelector(".slider").offsetWidth;
@@ -49,10 +49,9 @@ sliderDots.forEach((dot, index) => {
   });
 });
 
-setInterval;
-setInterval(() => {
-  nextSlide();
-}, 3000);
-nextButton.addEventListener("click", nextSlide);
-prevButton.addEventListener("click", prevSlide);
+// setInterval;
+// setInterval(() => {
+//   nextSlide();
+// }, 3000);
+
 showSlider();
