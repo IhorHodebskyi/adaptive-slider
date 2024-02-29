@@ -49,10 +49,10 @@ sliderDots.forEach((dot, index) => {
   });
 });
 
-// setInterval;
-// setInterval(() => {
-//   nextSlide();
-// }, 3000);
+setInterval;
+setInterval(() => {
+  nextSlide();
+}, 3000);
 nextButton.addEventListener("click", nextSlide);
 prevButton.addEventListener("click", prevSlide);
 showSlider();
