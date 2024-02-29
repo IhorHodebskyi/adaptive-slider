@@ -7,16 +7,16 @@ const slideLine = document.querySelector(".slider-line"),
 let position = 0,
   dotIndex = 0,
   sliderWidth = 0;
-window.addEventListener("resize", () => showSlider);
+window.addEventListener("resize", showSlider());
 //function
 
 const showSlider = () => {
   sliderWidth = document.querySelector(".slider-line").offsetWidth;
-  // slideLine.style.width = sliderWidth * slideImages.length + "px";
+  slideLine.style.width = sliderWidth * slideImages.length + "px";
   // console.log(sliderWidth);
   slideImages.forEach((item) => (item.style.width = sliderWidth + "px"));
-};
-showSlider();
+// };
+// showSlider();
 
 // const nextSlide = () => {
 //   if (position < (dots.length - 1) * 500) {
