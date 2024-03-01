@@ -18,9 +18,7 @@ const images = [
 ];
 
 const markup = images
-  .map(
-    (image) => `<img class="slider-img" src="${image.url}" alt="${image.alt}">`
-  )
+  .map(({ url, alt }) => `<img class="slider-img" src="${url}" alt="${alt}">`)
   .join(" ");
 
 slideLine.insertAdjacentHTML("afterbegin", markup);
@@ -32,6 +30,7 @@ const sliderDots = document.querySelectorAll(".dot");
 const prevButton = document.querySelector(".button-prev");
 const nextButton = document.querySelector(".button-next");
 const slideImages = document.querySelectorAll(".slider-img");
+
 let sliderCount = 0;
 let sliderWidth;
 
