@@ -1,21 +1,18 @@
-const slideLine = document.querySelector(".slider-line"),
-  slideImages = document.querySelectorAll(".slider-img"),
-  prevButton = document.querySelector(".button-prev"),
-  nextButton = document.querySelector(".button-next"),
-  sliderDots = document.querySelectorAll(".dot");
+const dotsWrapper = document.querySelector(".dots-wrapper");
+const slideLine = document.querySelector(".slider-line");
 //===========================================================
-const dots = document.querySelector(".dots-wrapper");
+
 const images = [
   {
-    url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
+    url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1200",
     alt: "White and Black Long Fur Cat",
   },
   {
-    url: "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?dpr=2&h=750&w=1260",
+    url: "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?dpr=2&h=750&w=1200",
     alt: "Orange and White Koi Fish Near Yellow Koi Fish",
   },
   {
-    url: "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?dpr=2&h=750&w=1260",
+    url: "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?dpr=2&h=750&w=1200",
     alt: "Group of Horses Running",
   },
 ];
@@ -25,17 +22,20 @@ const markup = images
     (image) => `<img class="slider-img" src="${image.url}" alt="${image.alt}">`
   )
   .join(" ");
-console.log(markup);
-slideLine.insertAdjacentHTML("beforeend", markup);
 
+slideLine.insertAdjacentHTML("afterbegin", markup);
+
+const markupDot = images.map((image) => `<div class="dot"></div>`).join(" ");
+dotsWrapper.insertAdjacentHTML("afterbegin", markupDot);
 //=============================================================
-
+const sliderDots = document.querySelectorAll(".dot");
+const prevButton = document.querySelector(".button-prev");
+const nextButton = document.querySelector(".button-next");
+const slideImages = document.querySelectorAll(".slider-img");
 let sliderCount = 0;
 let sliderWidth;
 
 window.addEventListener("resize", showSlider);
-nextButton.addEventListener("click", nextSlide);
-prevButton.addEventListener("click", prevSlide);
 
 function showSlider() {
   sliderWidth = document.querySelector(".slider").offsetWidth;
@@ -63,7 +63,8 @@ function rollSlider() {
 }
 
 function thisSlider(index) {
-  sliderDots.forEach((item) => item.classList.remove("active"));
+  sliderDots.forEach((item) => item?.classList.remove("active"));
+
   sliderDots[index].classList.add("active");
 }
 
@@ -75,10 +76,13 @@ sliderDots.forEach((dot, index) => {
   });
 });
 
-// setInterval;
-// setInterval(() => {
-//   nextSlide();
-// }, 3000);
+setInterval;
+setInterval(() => {
+  nextSlide();
+}, 4000);
+
+nextButton.addEventListener("click", nextSlide);
+prevButton.addEventListener("click", prevSlide);
 
 showSlider();
 thisSlider(sliderCount);

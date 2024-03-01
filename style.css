@@ -19,7 +19,7 @@ img {
 }
 .slider {
   position: relative;
-  max-width: 600px;
+  max-width: 1200px;
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 1px 1px 10px 2px #3d3a35;
