@@ -8,7 +8,7 @@ let slideImages = document.querySelectorAll("img");
 let sliderCount = 0;
 let sliderWidth;
 //==============API======================
-const url = `https://pixabay.com/api/?q=cat&page=1&key=36811784-c13148b3b1c3296db8a3ae716&image_type=photo&orientation=horizontal&per_page=10`;
+const url = `https://pixabay.com/api/?q=cat&page=1&key=36811784-c13148b3b1c3296db8a3ae716&image_type=photo&orientation=horizontal&per_page=5`;
 
 export default async function getAllImages() {
   try {
@@ -36,10 +36,17 @@ function addMarkupDots(hits) {
   dotsWrapper.innerHTML = "";
   dotsWrapper.innerHTML = markupDot;
   sliderDots = document.querySelectorAll(".dot");
+  thisSlider(sliderCount);
+  sliderDots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      sliderCount = index;
+      rollSlider();
+      thisSlider(sliderCount);
+    });
+  });
 }
 
 function render() {
-  console.log("render");
   getAllImages().then((hits) => {
     addMarkupImg(hits);
     addMarkupDots(hits);
@@ -51,7 +58,6 @@ render();
 window.addEventListener("resize", showSlider);
 
 function showSlider() {
-  console.log("showSlider");
   sliderWidth = document.querySelector(".slider").offsetWidth;
   slideLine.style.width = sliderWidth * slideImages.length + "px";
   slideImages.forEach((item) => (item.style.width = sliderWidth + "px"));
@@ -59,7 +65,6 @@ function showSlider() {
 }
 
 function nextSlide() {
-  console.log("nextSlide");
   sliderCount++;
   if (sliderCount >= slideImages.length) sliderCount = 0;
   rollSlider();
@@ -78,7 +83,6 @@ function rollSlider() {
 }
 
 function thisSlider(index) {
-  console.log("thisSlider");
   sliderDots.forEach((item) => item.classList.remove("active"));
   sliderDots[index].classList.add("active");
 }
@@ -91,10 +95,10 @@ sliderDots.forEach((dot, index) => {
   });
 });
 
-// setInterval;
-// setInterval(() => {
-//   nextSlide();
-// }, 4000);
+setInterval;
+setInterval(() => {
+  nextSlide();
+}, 4000);
 
 nextButton.addEventListener("click", nextSlide);
 prevButton.addEventListener("click", prevSlide);

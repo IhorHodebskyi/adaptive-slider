@@ -22,7 +22,7 @@ img {
   position: relative;
   max-width: 1200px;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 15px;
   box-shadow: 1px 1px 10px 2px #3d3a35;
 }
 .slider-line {
