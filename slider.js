@@ -1,34 +1,44 @@
 const dotsWrapper = document.querySelector(".dots-wrapper");
 const slideLine = document.querySelector(".slider-line");
-//===========================================================
-
-const images = [
-  {
-    url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1200",
-    alt: "White and Black Long Fur Cat",
-  },
-  {
-    url: "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?dpr=2&h=750&w=1200",
-    alt: "Orange and White Koi Fish Near Yellow Koi Fish",
-  },
-  {
-    url: "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?dpr=2&h=750&w=1200",
-    alt: "Group of Horses Running",
-  },
-];
-
-const markup = images
-  .map(({ url, alt }) => `<img class="slider-img" src="${url}" alt="${alt}">`)
-  .join(" ");
-
-slideLine.insertAdjacentHTML("afterbegin", markup);
-
-const markupDot = images.map((image) => `<div class="dot"></div>`).join(" ");
-dotsWrapper.insertAdjacentHTML("afterbegin", markupDot);
-//=============================================================
-const sliderDots = document.querySelectorAll(".dot");
 const prevButton = document.querySelector(".button-prev");
 const nextButton = document.querySelector(".button-next");
+
+const url = `https://pixabay.com/api/?q=cat&page=1&key=36811784-c13148b3b1c3296db8a3ae716&image_type=photo&orientation=horizontal&per_page=5`;
+
+export default async function getAllImages() {
+  try {
+    const response = await fetch(url);
+    const { hits } = await response.json();
+    return hits;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function addMarkupImg(hits) {
+  const markupImg = await hits
+    .map(
+      ({ largeImageURL, tags }) => `<img src="${largeImageURL}" alt="${tags}">`
+    )
+    .join(" ");
+  console.log(markupImg);
+  slideLine.innerHTML = await markupImg;
+}
+async function addMarkupDots(hits) {
+  const markupDot = await hits.map(() => `<div class="dot"></div>`).join(" ");
+  console.log(markupDot);
+  dotsWrapper.innerHTML = await markupDot;
+}
+async function render() {
+  await getAllImages().then((hits) => {
+    addMarkupImg(hits);
+    addMarkupDots(hits);
+  });
+}
+render();
+
+const sliderDots = document.querySelectorAll(".dots-wrapper");
+console.log(sliderDots.children);
 const slideImages = document.querySelectorAll(".slider-img");
 
 let sliderCount = 0;
@@ -60,10 +70,9 @@ function prevSlide() {
 function rollSlider() {
   slideLine.style.transform = `translateX(${-sliderCount * sliderWidth}px)`;
 }
-
+console.log(sliderDots);
 function thisSlider(index) {
-  sliderDots.forEach((item) => item?.classList.remove("active"));
-
+  sliderDots.forEach((item) => item.classList.remove("active"));
   sliderDots[index].classList.add("active");
 }
 
