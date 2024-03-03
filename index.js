@@ -10,7 +10,7 @@ let sliderWidth;
 //==============API======================
 const url = `https://pixabay.com/api/?q=cat&page=1&key=36811784-c13148b3b1c3296db8a3ae716&image_type=photo&orientation=horizontal&per_page=5`;
 
-export default async function getAllImages() {
+const getAllImages = async () => {
   try {
     const response = await fetch(url);
     const { hits } = await response.json();
@@ -18,8 +18,8 @@ export default async function getAllImages() {
   } catch (error) {
     console.error(error);
   }
-}
-//===========================================
+};
+//==============Render=============================
 function addMarkupImg(hits) {
   const markupImg = hits
     .map(
@@ -37,13 +37,7 @@ function addMarkupDots(hits) {
   dotsWrapper.innerHTML = markupDot;
   sliderDots = document.querySelectorAll(".dot");
   thisSlider(sliderCount);
-  sliderDots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-      sliderCount = index;
-      rollSlider();
-      thisSlider(sliderCount);
-    });
-  });
+  rooSliderByDot(sliderDots);
 }
 
 function render() {
@@ -54,7 +48,7 @@ function render() {
 }
 
 render();
-
+//===========================================
 window.addEventListener("resize", showSlider);
 
 function showSlider() {
@@ -86,14 +80,16 @@ function thisSlider(index) {
   sliderDots.forEach((item) => item.classList.remove("active"));
   sliderDots[index].classList.add("active");
 }
-
-sliderDots.forEach((dot, index) => {
-  dot.addEventListener("click", () => {
-    sliderCount = index;
-    rollSlider();
-    thisSlider(sliderCount);
+function rooSliderByDot(event) {
+  event.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      sliderCount = index;
+      rollSlider();
+      thisSlider(sliderCount);
+    });
   });
-});
+}
+rooSliderByDot(sliderDots);
 
 setInterval;
 setInterval(() => {
